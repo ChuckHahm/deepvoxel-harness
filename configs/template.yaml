@@ -1,0 +1,19 @@
+# Copy → configs/engagements/<slug>.yaml and fill in.
+# Populated copies are gitignored and never committed.
+
+engagement_id: ""
+client_name: ""
+vertical: ""          # medical_diagnostics | defense_govcon | energy_storage
+
+technology_description: >
+  [Describe the core technology or product in 2-4 sentences]
+
+bd_objectives: >
+  [What does the client want to achieve?]
+
+key_personnel:
+  - name: ""
+    role: ""
+
+target_entity_hint: ""   # leave blank for blind patent sweep
+transcript_path: ""      # path to raw transcript file, relative to repo root
