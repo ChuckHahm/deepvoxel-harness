@@ -2,7 +2,7 @@
 
 ## Purpose
 Prototype implementation of the deepVoxel CI report generation harness.
-Productionalizes the LipoNexus engagement methodology as chained LLM calls.
+Productionalizes the initial CI engagement methodology as chained LLM calls.
 
 ## Tooling
 - Python 3.11, uv for package management
@@ -33,7 +33,7 @@ Phase 2: Founding team stub (structure only, not yet wired)
 
 ## Engagement Config Pattern
 Each engagement is a gitignored YAML in configs/engagements/<slug>.yaml.
-Run: uv run poe run-replay              (liponexus replay)
+Run: uv run poe run-replay              (example replay)
      uv run poe run-engagement --engagement <slug>
 
 ## Do Not

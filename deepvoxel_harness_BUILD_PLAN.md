@@ -7,8 +7,8 @@
 
 ## Context and Motivation
 
-This plan productionalizes the LipoNexus CI engagement methodology as a
-chained LLM harness. The LipoNexus report was produced manually via the
+This plan productionalizes the initial CI engagement methodology as a
+chained LLM harness. The initial engagement report was produced manually via the
 claude.ai chat interface and validated the core approach: structured
 multi-step OSINT research with LLM synthesis at each layer produces
 unexpected, high-value findings that justify $8K–$25K report pricing.
@@ -116,7 +116,7 @@ Engagement YAML config
 │   └── harness_inspector.py         ← Plotly Dash chain inspector
 │
 ├── tests/
-│   └── test_engagement_replay.py    ← LipoNexus replay validation
+│   └── test_engagement_replay.py    ← example engagement replay validation
 │
 └── outputs/
     └── .gitkeep
@@ -302,7 +302,7 @@ git init && git add . && git commit -m "chore: bootstrap project structure"
 
 ## Purpose
 Prototype implementation of the deepVoxel CI report generation harness.
-Productionalizes the LipoNexus engagement methodology as chained LLM calls.
+Productionalizes the initial CI engagement methodology as chained LLM calls.
 
 ## Tooling
 - Python 3.11, uv for package management
@@ -333,7 +333,7 @@ Phase 2: Founding team stub (structure only, not yet wired)
 
 ## Engagement Config Pattern
 Each engagement is a gitignored YAML in configs/engagements/<slug>.yaml.
-Run: uv run poe run-replay              (liponexus replay)
+Run: uv run poe run-replay              (example replay)
      uv run poe run-engagement --engagement <slug>
 
 ## Do Not
@@ -759,11 +759,11 @@ from deepvoxel.application.runner import run_engagement
 @click.command()
 @click.option("--engagement", default=None, help="Engagement slug to run")
 @click.option("--replay", is_flag=True, default=False,
-              help="Run LipoNexus replay")
+              help="Run example engagement replay")
 def main(engagement: str, replay: bool):
     if replay:
         logger.info("Running engagement replay...")
-        run_engagement("liponexus")
+        run_engagement("example")
     elif engagement:
         run_engagement(engagement)
     else:
@@ -804,9 +804,9 @@ target_entity_hint: ""   # leave blank for blind patent sweep
 transcript_path: ""      # path to raw transcript file, relative to repo root
 ```
 
-**`configs/engagements/liponexus.yaml`** (gitignored — create locally)
+**`configs/engagements/example.yaml`** (gitignored — create locally)
 ```yaml
-engagement_id: "liponexus-001"
+engagement_id: "example-001"
 client_name: "[CLIENT NAME REDACTED]"
 vertical: "medical_diagnostics"
 
@@ -826,7 +826,7 @@ key_personnel:
     role: "Co-founder, UCSD Medical Center director"
 
 target_entity_hint: ""
-transcript_path: "configs/engagements/liponexus_transcript.txt"
+transcript_path: "configs/engagements/example_transcript.txt"
 ```
 
 #### Step 13 — Harness Inspector
@@ -854,7 +854,7 @@ app.layout = dbc.Container([
     dbc.Row([
         dbc.Col([
             html.Label("Engagement Slug"),
-            dcc.Input(id="slug-input", value="liponexus",
+            dcc.Input(id="slug-input", value="example",
                       style={"width": "100%"}),
             dbc.Button("Run Chain", id="run-btn",
                        color="primary", className="mt-2"),
@@ -959,7 +959,7 @@ import sys
 sys.path.insert(0, "..")
 from deepvoxel.application.runner import run_engagement
 
-ENGAGEMENT_SLUG = "liponexus"
+ENGAGEMENT_SLUG = "example"
 
 
 def test_intake_extraction():
@@ -1031,7 +1031,7 @@ cp /tmp/gstack/document/SKILL.md        .claude/commands/document-release.md
 | `/office-hours` | Before designing each new phase node |
 | `/plan-eng-review` | Before implementing the runner or any new DDD layer |
 | `/review` | Before each git commit |
-| `/document-release` | After LipoNexus replay validates successfully |
+| `/document-release` | After example engagement replay validates successfully |
 
 Skip: CEO, Designer, Release Manager, QA browser automation — not applicable at this stage.
 
@@ -1080,7 +1080,7 @@ git add . && git commit -m "feat: Phase 0+1 harness nodes"
 
 # FILE 3 — Validate
 # → write configs/template.yaml (tracked)
-# → create configs/engagements/liponexus.yaml (local only, gitignored)
+# → create configs/engagements/example.yaml (local only, gitignored)
 # → write inspector/harness_inspector.py + tools/inspect.py
 # → write tests/test_engagement_replay.py
 uv run poe run-replay       # validate Phase 0 + 1
@@ -1107,7 +1107,7 @@ across nodes.
 **After inspector is running:** Token consumption per node reveals where the
 chain is expensive and where prompt length can be optimized.
 
-**After LipoNexus replay:** Comparing harness output against the original
+**After the example engagement replay:** Comparing harness output against the original
 manual engagement findings tells you what the prototype gets right and where
 prompt templates need refinement before Phase 3 nodes are built.
 

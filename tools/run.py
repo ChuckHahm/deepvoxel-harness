@@ -6,11 +6,11 @@ from deepvoxel.application.runner import run_engagement
 
 @click.command()
 @click.option("--engagement", default=None, help="Engagement slug to run")
-@click.option("--replay", is_flag=True, default=False, help="Run LipoNexus replay")
+@click.option("--replay", is_flag=True, default=False, help="Run example engagement replay")
 def main(engagement: str, replay: bool):
     if replay:
         logger.info("Running engagement replay...")
-        run_engagement("liponexus")
+        run_engagement("example")
     elif engagement:
         run_engagement(engagement)
     else:

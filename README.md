@@ -1,7 +1,7 @@
 # deepVoxel LLM Harness
 
 Chained Anthropic API harness for generating competitive intelligence reports.
-Encodes the LipoNexus engagement methodology as explicit, inspectable API calls
+Encodes the CI engagement methodology as explicit, inspectable API calls
 with shared state — making it repeatable across engagements without rebuilding.
 
 ## Architecture
@@ -46,7 +46,7 @@ cp configs/template.yaml configs/engagements/<slug>.yaml
 
 uv run poe run-engagement --engagement <slug>
 
-# Or run the LipoNexus replay (requires liponexus.yaml locally):
+# Or run the example engagement replay (requires example.yaml locally):
 uv run poe run-replay
 ```
 
@@ -61,7 +61,7 @@ uv run poe run-inspector      # → http://localhost:8011
 ## Tests
 
 ```bash
-uv run pytest tests/ -v -s    # requires ANTHROPIC_API_KEY and liponexus.yaml
+uv run pytest tests/ -v -s    # requires ANTHROPIC_API_KEY and example.yaml
 ```
 
 ## Tasks
@@ -69,7 +69,7 @@ uv run pytest tests/ -v -s    # requires ANTHROPIC_API_KEY and liponexus.yaml
 | Command | Action |
 |---|---|
 | `uv run poe run-engagement` | Run an engagement by slug |
-| `uv run poe run-replay` | Run LipoNexus replay |
+| `uv run poe run-replay` | Run example engagement replay |
 | `uv run poe run-inspector` | Launch chain inspector on port 8011 |
 | `uv run poe lint-fix` | Lint and fix with ruff |
 | `uv run poe format-fix` | Format with ruff |
@@ -94,7 +94,7 @@ tools/
   run.py                    # CLI entry point
   inspect.py                # Inspector entry point
 tests/
-  test_engagement_replay.py # LipoNexus replay validation
+  test_engagement_replay.py # example engagement replay validation
 ```
 
 ## Constraints

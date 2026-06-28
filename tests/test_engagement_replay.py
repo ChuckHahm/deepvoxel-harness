@@ -8,7 +8,7 @@ import sys
 sys.path.insert(0, "..")
 from deepvoxel.application.runner import run_engagement
 
-ENGAGEMENT_SLUG = "liponexus"
+ENGAGEMENT_SLUG = "example"
 
 
 def test_intake_extraction():

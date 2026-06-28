@@ -24,7 +24,7 @@ app.layout = dbc.Container(
                 dbc.Col(
                     [
                         html.Label("Engagement Slug"),
-                        dcc.Input(id="slug-input", value="liponexus", style={"width": "100%"}),
+                        dcc.Input(id="slug-input", value="example", style={"width": "100%"}),
                         dbc.Button("Run Chain", id="run-btn", color="primary", className="mt-2"),
                     ],
                     width=3,
